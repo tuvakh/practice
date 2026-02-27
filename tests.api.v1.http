@@ -1,0 +1,24 @@
+GET http://localhost:3456/
+
+# NOT found is expected
+
+###
+GET http://localhost:3456/api/v1/
+
+# shows a custom not found message
+
+###
+GET http://localhost:3456/api/v1/users HTTP/1.1
+
+###
+GET http://localhost:3456/api/v1/books 
+Accept: application/json
+
+###
+GET http://localhost:3456/api/v1/books 
+Accept: text/plain
+
+###
+GET http://localhost:3456/api/v1/books 
+Accept: application/octet-stream
+
