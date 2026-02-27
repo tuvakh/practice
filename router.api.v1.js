@@ -25,3 +25,13 @@ routerV1.get("/books", (req, res)=> {
     res.json(books);
     // return all users
 });
+
+// the 'global' Not Found handler has to come last
+// it will run only if the incoming request was not matched to any other handler above it
+routerV1.use("/", (req, res)=> {
+    // all non-matched requests will be processed here
+    // which means that we handle all 404 cases here
+    res.status(404).json({
+        msg: `Router v1 says that this path (${req.path}) doesn't exist on this server`
+    });
+});
