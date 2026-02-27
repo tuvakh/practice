@@ -29,12 +29,12 @@ const corsSettings = {
                 }
                 break;
             case "stage":
-                if(allowedOrigins.prod.includes(origin)){
+                if(allowedOrigins.stage.includes(origin)){
                     return cb(null, true);
                 }
                 break;
-            case "dec":
-                if(allowedOrigins.prod.includes(origin)){
+            case "dev":
+                if(allowedOrigins.dev.includes(origin)){
                     return cb(null, true);
                 }
                 break;
