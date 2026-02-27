@@ -17,9 +17,14 @@ Accept: application/json
 ###
 GET http://localhost:3456/api/v1/books 
 Accept: text/plain
+Origin: http://localhost:10000
 
 ###
 GET http://localhost:3456/api/v1/books 
 Accept: application/octet-stream
+
+###
+POST http://localhost:3456/api/v1/books/new
+Content-Type: 
 
 

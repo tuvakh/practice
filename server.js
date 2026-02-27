@@ -10,13 +10,41 @@ const PORT = 3456;
 const app = express();
 
 // attaching cors middlewate
+const allowedOrigins = {
+    prod: ["http://our.business.site"],
+    dev: ["http://localhost:10000"],
+    stage: [
+        "http://staging.site", 
+        "http://some.other.staging.site", 
+        "http://i.run.out.of.ideas.site"
+    ]
+};
+
 const corsSettings = {
     origin: (origin, cb)=>{
-        // not implemented yet
+        switch(process.env.NODE_ENV){
+            case "production":
+                if(allowedOrigins.prod.includes(origin)){
+                    return cb(null, true);
+                }
+                break;
+            case "stage":
+                if(allowedOrigins.prod.includes(origin)){
+                    return cb(null, true);
+                }
+                break;
+            case "dec":
+                if(allowedOrigins.prod.includes(origin)){
+                    return cb(null, true);
+                }
+                break;
+            default:
+                console.error("UNKNOWN RUNNING environment: ", process.env.NODE_ENV);
+        }
+        return cb(new Error("This origin isn't allowed, " + origin));
     }
 };
 app.use(cors(corsSettings));
-
 
 // mouting routers 
 app.use("/api/v1", routerV1);
