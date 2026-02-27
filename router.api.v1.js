@@ -37,8 +37,8 @@ routerV1.get("/books", (req, res)=>{
         default:
             res.status(404);
     }
-    
 });
+
 routerV1.get("/users", (req, res)=>{
     // Return all books ig
     res.json(users);

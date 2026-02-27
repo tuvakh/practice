@@ -2,11 +2,20 @@ import express from "express";
 import { routerV1 } from "./router.api.v1.js";
 import { routerV2 } from "./router.api.v2.js";
 import { routerV21 } from "./router.api.v2.1.js";
+import cors from "cors";
 
 const PORT = 3456;
 
 // creating an express app
 const app = express();
+
+// attaching cors middlewate
+const corsSettings = {
+    origin: (origin, cb)=>{
+        // not implemented yet
+    }
+};
+app.use(cors(corsSettings));
 
 
 // mouting routers 
